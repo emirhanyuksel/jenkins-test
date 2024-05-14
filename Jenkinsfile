@@ -16,12 +16,12 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'sudo docker build -t yukselemirhan/emirhan-jenkins-test .'
+                sh 'sudo docker build -t yukselemirhan/emirhan-jenkins-test .' //Replace with your own dockerhub username + container name
             }
         }
         stage('Push Docker Image to Docker Hub') {
             steps {
-                sh 'sudo docker login --username test123 --password test123 docker.io'
+                sh 'sudo docker login --username test123 --password test123 docker.io' //Replace with your own username and password + container name
                 sh 'sudo docker push yukselemirhan/emirhan-jenkins-test'
             }
         }
@@ -29,7 +29,7 @@ pipeline {
         stage('Run Container on Remote Machine') {
             agent { label 'ubuntu-slave' } 
             steps {
-                sh 'docker pull yukselemirhan/emirhan-jenkins-test' 
+                sh 'docker pull yukselemirhan/emirhan-jenkins-test' //Replace with your own dockerhub username + container name
 
                 sh 'docker run --rm yukselemirhan/emirhan-jenkins-test' 
             }
