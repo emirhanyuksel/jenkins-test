@@ -34,3 +34,5 @@ pipeline {
                 sh 'docker run --rm yukselemirhan/emirhan-jenkins-test' 
             }
         }
+    }
+}
